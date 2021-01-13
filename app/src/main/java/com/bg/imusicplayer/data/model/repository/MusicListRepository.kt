@@ -5,7 +5,8 @@ import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.bg.imusicplayer.data.db.IMusicDataBase
-import com.bg.imusicplayer.data.model.obj.MusicFeed
+import com.bg.imusicplayer.data.model.obj.xmlobj.Feed
+
 import com.bg.imusicplayer.data.network.AbstractTaskApiRequest
 import com.bg.imusicplayer.data.network.ApiEndPoint
 import com.bg.imusicplayer.data.utils.Coroutines
@@ -18,10 +19,10 @@ import kotlinx.coroutines.withContext
  */
 class MusicListRepository (val apiEndPoint: ApiEndPoint, val db: IMusicDataBase) : AbstractTaskApiRequest(){
 
-    private val musicFeedLiveData = MutableLiveData<MusicFeed>()
+    private val musicFeedLiveData = MutableLiveData<Feed>()
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
-    suspend fun fetchTopMusicFeed(limit: Int): MutableLiveData<MusicFeed> {
+    suspend fun fetchTopMusicFeed(limit: Int): MutableLiveData<Feed> {
         return withContext(Dispatchers.IO) {
             var   response = apiRequest { apiEndPoint.fetchTopSongs(limit) }
             musicFeedLiveData.postValue(response)
@@ -31,13 +32,13 @@ class MusicListRepository (val apiEndPoint: ApiEndPoint, val db: IMusicDataBase)
     }
 
 
-    fun saveTopSongsInfo(resultsItem: MusicFeed) {
+    fun saveTopSongsInfo(resultsItem: Feed) {
         Coroutines.io {
             db.getMusicDao().saveTopSongInfo(resultsItem)
         }
     }
 
-    suspend fun getOfflineSongs(): LiveData<MusicFeed> {
+    suspend fun getOfflineSongs(): LiveData<Feed> {
         return withContext(Dispatchers.IO) {
             db.getMusicDao().getOfflineTopSongs()
         }

@@ -87,6 +87,8 @@ android {
         implementation 'androidx.legacy:legacy-support-v4:1.0.0'
         implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 
+        compile 'com.squareup.retrofit2:converter-simplexml:2.5.0'
+
         implementation 'com.airbnb.android:lottie:3.4.1'
 
         implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1"

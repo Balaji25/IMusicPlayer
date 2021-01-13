@@ -7,7 +7,7 @@
     <data>
        <variable
             name="musicModel"
-            type="com.bg.imusicplayer.data.model.obj.Entry" />
+            type="com.bg.imusicplayer.data.model.obj.xmlobj.Entry" />
 
         <variable
             name="imusicUtils"
@@ -32,9 +32,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.023"
-            app:roundImage="@{musicModel.image.get(0).label}"
+            app:roundImage="@{imusicUtils.getImageUrl(musicModel.content)}"
             tools:srcCompat="@tools:sample/avatars" />
-
+        <!--app:roundImage="@{musicModel.image.get(0).label}"-->
         <TextView
             android:id="@+id/song_name_textview"
             android:layout_width="wrap_content"
@@ -44,7 +44,7 @@
             android:fontFamily="sans-serif"
             android:hint="@string/song_name"
 
-            android:text="@{musicModel.name.label}"
+            android:text="@{musicModel.name}"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="@dimen/text_size_12sp"
@@ -61,7 +61,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="sans-serif-light"
             android:hint="@string/song_description"
-            android:text="@{musicModel.title.label}"
+            android:text="@{musicModel.title}"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="@dimen/text_size_10sp"
@@ -78,14 +78,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:hint="4:30"
-            android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).duration.label)}"
+            android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).duration)}"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.509" />
-
+      <!--  android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).attributes.href)}"-->
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"

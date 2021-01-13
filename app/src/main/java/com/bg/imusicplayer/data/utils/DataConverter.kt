@@ -1,9 +1,10 @@
 package com.bg.imusicplayer.data.utils
 
 import androidx.room.TypeConverter
-import com.bg.imusicplayer.data.model.obj.Entry
-import com.bg.imusicplayer.data.model.obj.ImImage
-import com.bg.imusicplayer.data.model.obj.Link
+import com.bg.imusicplayer.data.model.obj.xmlobj.Entry
+import com.bg.imusicplayer.data.model.obj.xmlobj.ImImage
+import com.bg.imusicplayer.data.model.obj.xmlobj.Link
+
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type

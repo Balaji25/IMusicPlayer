@@ -7,7 +7,7 @@
     <data>
         <variable
             name="musicModel"
-            type="com.bg.imusicplayer.data.model.obj.Entry" />
+            type="com.bg.imusicplayer.data.model.obj.xmlobj.Entry" />
 
         <variable
             name="viewModelDetail"
@@ -25,21 +25,21 @@
         android:layout_height="match_parent"
         android:background="@color/app_background_color">
 
-
+       <!-- app:imageUrl="@{musicModel.image.get(0).text}"-->
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_400dp"
             android:alpha="9"
             android:scaleType="fitXY"
-            app:imageUrl="@{musicModel.image.get(2).label}"
+            app:imageUrl="@{imusicUtils.getImageUrl(musicModel.content)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
 
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
+       <!-- app:imageUrl="@{musicModel.image.get(2).label}"-->
         <TextView
             android:id="@+id/song_name_textview"
             android:layout_width="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_marginTop="80dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:hint="@string/song_name"
-            android:text="@{musicModel.name.label}"
+            android:text="@{musicModel.name}"
             android:textColor="@color/white"
             android:textColorHint="@color/app_field_color"
             android:textSize="18sp"
@@ -63,7 +63,7 @@
             android:layout_marginStart="@dimen/_24dp"
             android:fontFamily="sans-serif-condensed-light"
             android:hint="@string/song_description"
-            android:text="@{musicModel.artist.label}"
+            android:text="@{musicModel.title}"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -80,7 +80,7 @@
             android:layout_marginTop="@dimen/_356dp"
             android:fontFamily="sans-serif"
             android:hint="@string/price_5_81"
-            android:text="@{musicModel.price.label}"
+            android:text="@{imusicUtils.formatCurrency( musicModel.price.label)}"
             android:textColor="@color/white"
             android:textColorHint="@color/app_field_color"
             app:layout_constraintStart_toStartOf="@id/imageView2"
@@ -92,7 +92,7 @@
             android:layout_height="@dimen/_200dp"
             android:layout_marginTop="136dp"
             android:layout_marginEnd="16dp"
-            app:image="@{musicModel.title.label}"
+            app:image="@{musicModel.title}"
             app:layout_constraintEnd_toStartOf="@+id/song_price_textview"
             app:layout_constraintTop_toTopOf="parent"
             app:lottie_autoPlay="true"
@@ -109,7 +109,7 @@
             android:hint="@string/rights"
             app:layout_constraintEnd_toEndOf="parent"
             android:textColor="@color/white"
-            android:text="@{musicModel.rights.label}"
+            android:text="@{musicModel.rights}"
             android:ellipsize="marquee"
             android:textColorHint="@color/white"
             android:textSize="@dimen/text_size_16sp"
@@ -121,7 +121,8 @@
             android:id="@+id/imageView4"
             android:layout_width="@dimen/_124dp"
             android:layout_height="@dimen/_124dp"
-            android:onClick="@{(view) -> viewModelDetail.playSong(musicModel.link.get(1).attributes.href,view)}"
+            android:onClick="@{(view) -> viewModelDetail.playSong(musicModel.link.get(1).href,view)}"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -189,7 +190,7 @@
             android:textColor="@color/white"
             android:textColorHint="@color/app_field_color"
             android:hint="@string/_0_39"
-            android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).duration.label)}"
+            android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).duration)}"
             android:fontFamily="sans-serif-condensed-light"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -197,13 +198,13 @@
             app:layout_constraintHorizontal_bias="0.067"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/song_desc_textview" />
-
+<!--        android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).attributes.href)}"-->
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@{imusicUtils.getDayName(musicModel.releaseDate.label)}"
+            android:text="@{musicModel.releaseDate.label}"
             android:hint="@string/release_date"
             android:textColor="@color/white"
             android:textSize="16sp"
@@ -216,6 +217,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView2"
             app:layout_constraintVertical_bias="0.0" />
 
+       <!-- android:text="@{imusicUtils.getDayName(musicModel.releaseDate.label)}"-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

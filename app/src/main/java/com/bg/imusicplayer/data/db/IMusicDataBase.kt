@@ -1,11 +1,13 @@
 package com.bg.imusicplayer.data.db
 
-import com.bg.imusicplayer.data.model.obj.MusicFeed
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.bg.imusicplayer.data.model.obj.xmlobj.Feed
+
 import com.bg.imusicplayer.data.utils.DataConverter
 
 
@@ -14,7 +16,7 @@ import com.bg.imusicplayer.data.utils.DataConverter
  */
 
 @Database(
-    entities = [MusicFeed::class],
+    entities = [Feed::class],
     version = 1, exportSchema = false)
 @TypeConverters(
     DataConverter::class)

@@ -7,7 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bg.callhistory.callback.MusicCallback
 import com.bg.imusicplayer.R
-import com.bg.imusicplayer.data.model.obj.Entry
+import com.bg.imusicplayer.data.model.obj.xmlobj.Entry
+
 import com.bg.imusicplayer.data.utils.IMusicUtils
 import com.bg.imusicplayer.data.view.MusicListFragment
 import com.bg.imusicplayer.databinding.SongListItemBinding

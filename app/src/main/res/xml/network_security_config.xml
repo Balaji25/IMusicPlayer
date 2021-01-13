@@ -2,7 +2,7 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">ax.itunes.apple.com</domain>
-
+        <domain includeSubdomains="true">a640.phobos.apple.com</domain>
 
     </domain-config>
 </network-security-config>

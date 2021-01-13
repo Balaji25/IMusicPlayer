@@ -18,7 +18,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bg.callhistory.callback.MusicCallback
 import com.bg.imusicplayer.R
 import com.bg.imusicplayer.data.Adapter.MusicListAdapter
-import com.bg.imusicplayer.data.model.obj.Entry
+import com.bg.imusicplayer.data.model.obj.xmlobj.Entry
+
 import com.bg.imusicplayer.data.utils.ApiException
 import com.bg.imusicplayer.data.utils.AppConstants.ENTRY_OBJ
 import com.bg.imusicplayer.data.utils.Coroutines
@@ -74,18 +75,33 @@ setPrimaryColorStatusBarColor()
     private fun initMusicListData()= Coroutines.main {
         try {
           var  musicFragmentContext=this
+
             lifecycleScope.launch {
+                songListViewModel.getSongInfo(20).observe(viewLifecycleOwner, Observer {
+                    it?.let { it1 ->
+                        it1?.entry?.let { it2 ->
+                            musicListAdapter?.setMusicList(
+                                    musicFragmentContext, requireActivity(),
+                                    it2
+                            )
+                        }
+                    }
+
+                })
+            }
+
+           /* lifecycleScope.launch {
 
                 songListViewModel.getOfflineSongs().observe(viewLifecycleOwner, {
-                    if (it != null && it?.feed?.entry?.size!! >= 0) {
+                    if (it != null && it?.entry?.size!! >= 0) {
                         musicListAdapter?.setMusicList(
                             musicFragmentContext, requireActivity(),
-                            it.feed.entry
+                            it.entry
                         )
                     } else {
                         lifecycleScope.launch {
                             songListViewModel.getSongInfo(20).observe(viewLifecycleOwner, Observer {
-                                it.feed?.let { it1 ->
+                                it?.let { it1 ->
                                     musicListAdapter?.setMusicList(
                                         musicFragmentContext, requireActivity(),
                                         it1.entry
@@ -98,7 +114,7 @@ setPrimaryColorStatusBarColor()
 
                 })
 
-            }
+            }*/
 
         } catch (e: ApiException) {
             e.printStackTrace()

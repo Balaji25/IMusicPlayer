@@ -13,7 +13,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bg.imusicplayer.R
-import com.bg.imusicplayer.data.model.obj.Entry
+import com.bg.imusicplayer.data.model.obj.xmlobj.Entry
+
 import com.bg.imusicplayer.data.utils.AppConstants
 import com.bg.imusicplayer.data.utils.IMusicUtils
 import com.bg.imusicplayer.data.viewmodel.SongDetailsViewModel

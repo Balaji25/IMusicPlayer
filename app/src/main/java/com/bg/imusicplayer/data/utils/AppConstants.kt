@@ -6,6 +6,6 @@ package com.bg.imusicplayer.data.utils
 object AppConstants {
    var APP_URL="http://ax.itunes.apple.com/WebObjects/MZStoreServices.woa/ws/RSS/"
     const val TOP_SONGS="topsongs"
-    const val RESPONSE_DATA_TYPE="/json"
+    const val RESPONSE_DATA_TYPE="/xml"
     const val ENTRY_OBJ="ENTRY_OBJ"
 }
